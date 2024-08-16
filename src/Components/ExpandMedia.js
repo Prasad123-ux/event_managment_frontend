@@ -1,5 +1,5 @@
 import React from 'react'
-import 'C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/ExpandMedia.css'
+import "../Styles/ExpandMedia.css"
 import { useSearchParams } from 'react-router-dom'
 function ExpandMedia() {
 

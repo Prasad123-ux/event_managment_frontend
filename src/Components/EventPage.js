@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaEdit } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
+import "../Styles/eventpage.css"
 import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/eventPage.css"
 import { GrView } from "react-icons/gr";
 

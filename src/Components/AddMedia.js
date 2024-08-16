@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/addMedia.css"
+import "../Styles/addMedia.css"
 import { useToast } from '@chakra-ui/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Navbar from './Navbar';

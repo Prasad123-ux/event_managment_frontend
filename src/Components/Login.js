@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { IoCheckmark } from "react-icons/io5";
-import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/login.css"
+import "../Styles/login.css"
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 
@@ -11,20 +11,20 @@ import { useToast } from '@chakra-ui/react';
 function Login() {
 
   
-  const [vendorData,setVendorData]= useState({email:"",password:""})
-  const token= localStorage.getItem('token')
+  const [vendorData,setVendorData]= useState({email:"",password:""})          //Getting the user input detail 
+  
   const navigate= useNavigate()
   const toast= useToast()
 
   onchange=(e)=>{
-    setVendorData({...vendorData,[e.target.name]:e.target.value})
+    setVendorData({...vendorData,[e.target.name]:e.target.value})                 //Adding details in array 
   }
 
   const handleFormData=(e)=>{
 
     e.preventDefault()
 
-    fetch('http://localhost:7000/api/vendor/login',{
+    fetch('http://localhost:7000/api/vendor/login',{                                //Calling the API for log in Vendor
       method:'POST',
       body:JSON.stringify({data:vendorData}),
       headers:{
@@ -53,7 +53,7 @@ function Login() {
 
 
   const addToast=(title,message,status)=>{
-    toast({
+    toast({                                                           //Toast Message showing for user
       title: title,
       description: message,
       status: status,
@@ -68,7 +68,10 @@ function Login() {
       <div className='login-vendor-page d-flex justify-content-center  align-items-center  flex-column flex-md-row ' style={{"backgroundColor":"#FAFAFA"}}>
       <div className='login-vendor-form shadow  p-4  rounded-5  mt-5' style={{"backgroundColor":"#FFFFFF"}} >
         <span className='fw-medium d-block fs-4'>Login</span>
+
+     {/* Form for user login  */}
         <form  onSubmit={handleFormData}>
+
         <div class="col-md-12 col-12 mt-3 ">
     <label for="validationDefault01" class="form-label">Email</label>
     <input type="email" class="form-control rounded-4" id="validationDefault01"  placeholder="Enter Email ID / Username"    name="email" onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
@@ -83,7 +86,6 @@ function Login() {
           <div   className='otp text-primary mx-auto btn-link d-flex justify-content-center mt-1 w-50'>Use OTP to Login</div>
          <span className='d-flex justify-content-center mt-3'>or </span>
          <button className='btn shadow rounded-5 text-secondary fw-medium d-flex justify-content-around  mx-auto mt-3' style={{backgroundColor:"white"}}>  <FcGoogle className='mt-1' style={{width:"30px"}} />Sign in with Google</button>
-       {/* <div><GoogleSignIn/>></div> */}
 
       </div>
       <div className='login-detail shadow mt-5 d-none d-sm-block ms-2 p-5 rounded-5' style={{"backgroundColor":"#FFFFFF"}} >
@@ -101,17 +103,12 @@ function Login() {
           <IoCheckmark  className='fs-4 text-success' style={{"width":"20px"}} /> <span>Photography is the story I fail to put into words. </span>
         </div>
         <div className='d-flex justify-content-between mt-5'>
-          {/* <button onClick={()=>{navigate('/vendor/registration')}}  className='text-primary bg-white btn   border w-50 p-2  border-primary' >Register for Free</button> */}
         </div>
         <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQY3kRO9-yVxLT6ParUDJkZLEVjVVvj3SOZgeuIkFhtQHd3Uh9U" className=' w-25 d-flex mt-5 mx-auto' alt=""/>
 
       </div>
 
       
-{/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button> */}
-
 
 
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

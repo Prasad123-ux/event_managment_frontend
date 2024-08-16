@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/Dashboard.css"
+import "../Styles/Dashboard.css"
 import { IoMdAdd } from "react-icons/io";
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ButtonGroup,IconButton,Button } from '@chakra-ui/react';
-import { FaCopy } from "react-icons/fa";
-import { useToast,Stack,Spinner } from '@chakra-ui/react';
+
+import { useToast } from '@chakra-ui/react';
 import Navbar from './Navbar';
-import Loader from './Loader';
-// import AddMedia from './AddMedia';
+
+
 
 
 

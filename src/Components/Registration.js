@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/registraion.css"
+import "../Styles/registraion.css"
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';

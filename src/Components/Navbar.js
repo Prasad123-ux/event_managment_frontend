@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { IoIosLogOut } from "react-icons/io";
-import "C:/Users/metka/Desktop/event_managment_system/frontend/src/Styles/Navbar.css"
+import "../Styles/Navbar.css"
 function Navbar() {
 const [token,setToken]= useState(null)
 
