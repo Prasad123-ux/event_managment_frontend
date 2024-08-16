@@ -1,0 +1,71 @@
+.login-user-page{
+
+    width: 100%;
+}
+
+.login-user-form{
+    width: 30%;
+    height: fit-content;
+
+}
+
+.login-vendor-btn{
+   
+    margin-left: 80px;
+}
+.name-link{
+    width: fit-content;
+}
+@media only screen and  ( max-width: 576px  ) {
+    .login-user-page{
+
+        width: 100%;
+    }
+    
+    .login-user-form{
+        width: 80%;
+        height: fit-content;
+    
+    }
+    
+    .login-vendor-btn{
+       
+        margin-left: 60px;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:768px) {
+    .login-user-page{
+
+        width: 100%;
+    }
+    
+    .login-user-form{
+        width: 80%;
+        height: fit-content;
+    
+    }
+    
+    .login-vendor-btn{
+       
+        margin-left: 100px;
+    }
+
+}
+@media only screen and (min-width:769px) and (max-width:1350px) {
+    .login-user-page{
+
+        width: 100%;
+    }
+    
+    .login-user-form{
+        width: 40%;
+        height: fit-content;
+    
+    }
+    
+    .login-vendor-btn{
+       
+        margin-left: 100px;
+    }
+
+}

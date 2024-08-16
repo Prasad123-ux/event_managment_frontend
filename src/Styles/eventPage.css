@@ -1,0 +1,86 @@
+.event-img :hover{
+    width: "100px";
+    opacity: 0.5;
+}
+.event-img{
+    border: 1px;
+    border-radius: 10px;
+    width: 100%;
+    object-fit: contain;
+    /* height: 100%; */
+    &:hover{
+        /* width:100px; */
+        cursor: pointer;
+        /* height: 100px; */
+        /* width: 100%; */
+
+    }
+}
+.card-event{
+    
+    width: 100%;
+    height: 100%;
+    
+
+
+    min-width: 200px;
+    margin-right: 10px; 
+    
+    flex-shrink: 0; 
+    margin-right: 30px;
+
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.card-event .side-img{
+    display: block;
+    width: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.card-event:hover .side-img{
+/* opacity: 0.3; */
+
+}
+
+.side-img{
+    height: 100%;
+    border-radius: 8px;
+    /* &:hover{
+        opacity: 0.3;
+        
+    } */
+}
+.card-event .overlay-event{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0;  
+  transition: opacity 0.3s ease;
+
+    }
+ .card-event:hover .overlay-event{
+    font-size: 0.7rem;
+        opacity: 0.8;
+        color:aquamarine;
+        width:100%;
+        height:10%;
+    }
+
+
+.card-event:hover .overlay-event{
+    font-size: 1rem;
+        /* opacity: 1; */
+        color:aquamarine
+    }
+
