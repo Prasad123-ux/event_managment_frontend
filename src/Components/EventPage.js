@@ -15,7 +15,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 
 
 
-function EventPage() {
+function EventPage({api}) {
   const [mediaUrls,setMediaUrls]= useState([])
   const [token, setToken]= useState(null)
   const [loader,setLoader]= useState(false)
@@ -25,12 +25,12 @@ function EventPage() {
   const months=["jan", "Feb", "March", "April", "May", "Jun","July", "Aug", "Sep", "Oct", "Nov", "Dec"]        
   const navigate=useNavigate()
   const toast= useToast()
-
+  const apiUrl= process.env.REACT_APP_API_URL
    
 const deleteFile=async(url)=>{
   setLoader(true)                                                                                       //API for deleting event Media
   try{
-  const response=  await fetch('http://localhost:7000/api/vendor/event/delete',{
+  const response=  await fetch(`${api}/api/vendor/event/delete`,{
 method:"POST",
 body:JSON.stringify({token:token,eventName:data.eventName, media:url}),
 headers:{
@@ -62,7 +62,7 @@ console.error(err)
         const ExplainEvent= async()=>{
           setLoader(true)
     //   Making a API request for fetching the data of particular event  that event we got using
-         await fetch(`http://localhost:7000/api/client/getEventDetails/${id}`,{
+         await fetch(`${api}/api/client/getEventDetails/${id}`,{
                 method:"GET",
                 headers:{
                     "Content-type":"application/json"
@@ -114,7 +114,7 @@ console.error(err)
 const handleEditData=async (e)=>{
   setLoader(false)
     e.preventDefault()
-    await fetch(`http://localhost:7000/api/vendor/updateEventData/${id}`,{
+    await fetch(`${api}/api/vendor/updateEventData/${id}`,{
         method:"POST",
         body:JSON.stringify({token:token,data:editEventData,media:mediaUrls}),
         headers:{
@@ -227,7 +227,7 @@ const shareID=()=>{
         <div className='d-flex justify-content-between '>
             <span className='ms-5 fs-4 fw-bold text-info' >{data.eventName  &&  data.eventName.length>=1 ? data.eventName[0].toUpperCase()+data.eventName.slice(1):"" } </span>
 
-             {/* <!-- Button trigger Edit data modal --> */}
+        
            {token!==null ?  <button className='btn btn-outline-primary me-5 d-none d-sm-block'data-bs-toggle="modal" data-bs-target="#staticBackdrop"><span><FaEdit className='mb-1' /></span></button>:""}
 
         </div>
@@ -244,7 +244,7 @@ const shareID=()=>{
   <div className=' show-events-event align-items-center justify-content-around row  mt-5 mx-auto'>
        {/* Rendering the data of all media files */}
             { data.media && data.media.length>=1 ?data.media.map((image,idx)=>(
-              <div key={idx} class="card-event col-3 mt-4 col-3  ">
+              <div key={idx} className="card-event col-3 mt-4 col-3  ">
 
                 {/* Checking here media file is video or image  */}
 
@@ -254,7 +254,7 @@ const shareID=()=>{
            </div>
            </div>
 ))
- :<div className='mx-auto text-center fs-5 text-secondary mt-5'> No Media Found</div>}
+ :loader ===false ?<div className='mx-auto text-center fs-5 text-secondary mt-5'> No Media Found</div>:""}
   
   </div>
       {/* Making a module for Editing the data of event */}
@@ -262,31 +262,31 @@ const shareID=()=>{
 
 
 {/* <!-- Modal --> */}
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Edit Event Detail</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="staticBackdropLabel">Edit Event Detail</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div className="modal-body">
 
 
       <form onSubmit={handleEditData} >
-        <div class="form-row mt-5">
-    <div class="form-group col-md-12">
+        <div className="form-row mt-5">
+    <div className="form-group col-md-12">
       <label htmlFor="inputFullName">Event Name <span className='text-danger'>*</span></label>
       <input type="name" className="form-control rounded-3" id="inputFullName" name="eventName" value={editEventData.eventName}   onChange={onchange} placeholder=" Event Name" />
     </div>
-    <div class="form-group col-md-12">
+    <div className="form-group col-md-12">
       <label htmlFor="inputDescription">Event Description <span className='text-danger'>*</span></label>
       <input type="text" className="form-control rounded-3" id="inputEmail" name="description" value={editEventData.description}   onChange={onchange} placeholder="Event Description" />
     </div>
-    <div class="form-group col-md-12">
+    <div className="form-group col-md-12">
       <label htmlFor="inputDate">Event Date <span className='text-danger'> *</span></label>
       <input type="Date" className="form-control rounded-3" id="inputDate" name="date" value={editEventData.date}  onChange={onchange} placeholder="Event Date"/>
     </div>
-    <div type='file' onClick={handleUpload} className='btn w-25 mt-2 mx-auto upload-btn'> <span className='mx-auto'><IoCloudUploadOutline  c/></span> <span className='mx-auto'>Upload Files</span></div>
+    <div type='file' onClick={handleUpload} className='btn w-25 mt-2 mx-auto upload-btn'> <span className='mx-auto'><IoCloudUploadOutline  /></span> <span className='mx-auto'>Upload Files</span></div>
 
     </div>
 

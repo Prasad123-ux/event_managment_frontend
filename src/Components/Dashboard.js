@@ -3,20 +3,19 @@ import "../Styles/Dashboard.css"
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { ButtonGroup,IconButton,Button } from '@chakra-ui/react';
-
-import { useToast } from '@chakra-ui/react';
 import Navbar from './Navbar';
 
 
 
 
 
-function Dashboard() {
+
+function Dashboard({api}) {
   const [token,setToken]= useState(null)
   const [loader,setLoader]= useState(false)
-  const toast= useToast()
   const [events,setEvents]= useState([])
   const navigate= useNavigate()
+  
 
 
  
@@ -25,7 +24,7 @@ useEffect(()=>{
                                                           // This is the home API which render after every reload 
 const handleFindEvents=()=>{
       setLoader(true)
-      fetch('http://localhost:7000/api/vendor/getEvents',{
+      fetch(`${api}/api/vendor/getEvents`,{
         method:"GET",
         headers:{
           "Content-type":"application/json"
@@ -73,7 +72,8 @@ const handleFindEvents=()=>{
  },[token])
    
  
-  return (<>
+  return (
+  <>
  {token!==null ? <Navbar/>:""}                              
  {/* showing data for authenticate user */}
 
@@ -101,7 +101,7 @@ const handleFindEvents=()=>{
         {/* Rendering image of all events */}
 
             { item.media.length>=1? item.media.map((image,idx)=>(
-              <div key={idx} class="card">
+              <div key={idx} className="card">
            {  image.endsWith('.mp4') || image.endsWith('.webm') || image.includes("video")? 
            <video controls><source src={image} type="video/mp4" /></video>: 
            <img src={image} className=" d-block w-100 side-img" alt="Event Images"/>
@@ -118,7 +118,7 @@ const handleFindEvents=()=>{
 // </div>
 })
 : loader===false ? (<div className=' mx-auto text-center container  align-items-center'>
-  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcStxg6vR4dfSNX8ON0X2UXtBdCuMEjdnHoqiTTxMW-yd192-wfk" class=" d-block w-50 mx-auto side-img" alt="..."/>
+  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcStxg6vR4dfSNX8ON0X2UXtBdCuMEjdnHoqiTTxMW-yd192-wfk" className=" d-block w-50 mx-auto side-img" alt="..."/>
 
   </div>):""}
 

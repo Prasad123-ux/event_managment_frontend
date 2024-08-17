@@ -45,7 +45,7 @@ const [token,setToken]= useState(null)
 
                     <div className='d-flex justify-content-around col-12 col-md-6 '>
                         <button onClick={getMedia} className='btn btn-sm-outline-info btn-outline-info d-none  d-sm-block'><IoMdAdd className='fs-4' /></button>
-                        <button className='btn  btn-outline-info' data-bs-target="#exampleModal"  data-bs-toggle="modal"s><IoIosLogOut /></button>
+                        <button className='btn  btn-outline-info' data-bs-target="#exampleModal"  data-bs-toggle="modal"><IoIosLogOut /></button>
                       {  token===null ? <Link className="nav-link" to="/vendor/login">I'm Photographer</Link>:""}
                     </div>
                 </div>
@@ -53,19 +53,19 @@ const [token,setToken]= useState(null)
         
 
 
-            <div class="modal" tabindex="-1" id="exampleModal" >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Log Out</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal"  id="exampleModal" >
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title">Log Out</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div className="modal-body">
         <p className='text-secondary fw-bold '>Are Your sure to Log Out?  </p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={logOut}>Yes! i'm Ready</button>
-        <button type="button" class="btn btn-primary " data-bs-dismiss="modal"  aria-label="Close">Go Back</button>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={logOut}>Yes! i'm Ready</button>
+        <button type="button" className="btn btn-primary " data-bs-dismiss="modal"  aria-label="Close">Go Back</button>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 
-function Registration() {
+function Registration({api}) {
 
 
 const navigate= useNavigate()
@@ -24,7 +24,7 @@ const handleRegisterFormData=(e)=>{
   
 
 
-    fetch('http://localhost:7000/api/vendor/registration',{
+    fetch(`${api}/api/vendor/registration`,{
       method:"POST",
       body:JSON.stringify({data:vendorRegisterData}),
       headers:{
@@ -89,21 +89,21 @@ const onchange=(e)=>{
           <div className='login-form shadow  p-4  rounded-5  mt-5' style={{"backgroundColor":"#FFFFFF"}} >
         <span className='fw-medium d-block fs-5'>Register as a Vendor</span>
         <form  onSubmit={handleRegisterFormData}>
-        <div class="col-md-12 col-12 mt-3 ">
-    <label for="validationDefault01" class="form-label">User Name</label>
-    <input type="name" class="form-control rounded-4 text-center" id="validationDefault01"  placeholder="Enter  Username"  name="name" value={vendorRegisterData.name}  onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
+        <div className="col-md-12 col-12 mt-3 ">
+    <label htmlFor="validationDefault01" className="form-label">User Name</label>
+    <input type="name" className="form-control rounded-4 text-center" id="validationDefault01"  placeholder="Enter  Username"  name="name" value={vendorRegisterData.name}  onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
   </div>
-        <div class="col-md-12 col-12 mt-3 ">
-    <label for="validationDefault02" class="form-label">Email</label>
-    <input type="email" class="form-control rounded-4 text-center" id="validationDefault02"  placeholder="Enter Email ID / Username"  name="email" value={vendorRegisterData.email}  onChange={onchange}  style={{"backgroundColor":"#E8F0FE"}} required/>
+        <div className="col-md-12 col-12 mt-3 ">
+    <label htmlFor="validationDefault02" className="form-label">Email</label>
+    <input type="email" className="form-control rounded-4 text-center" id="validationDefault02"  placeholder="Enter Email ID / Username"  name="email" value={vendorRegisterData.email}  onChange={onchange}  style={{"backgroundColor":"#E8F0FE"}} required/>
   </div>
-  <div class="col-md-12 col-12 mt-3">
-    <label for="validationDefault03" class="form-label">Password</label>
-    <input type="password" class="form-control rounded-4 text-center" id="validationDefault03"  placeholder="Enter Password"  name="password"  value={vendorRegisterData.password}   onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
+  <div className="col-md-12 col-12 mt-3">
+    <label htmlFor="validationDefault03" className="form-label">Password</label>
+    <input type="password" className="form-control rounded-4 text-center" id="validationDefault03"  placeholder="Enter Password"  name="password"  value={vendorRegisterData.password}   onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
   </div>
-  <div class="col-md-12 col-12 mt-3">
-    <label for="validationDefault04" class="form-label"> Conform Password</label> 
-    <input type="password" class="form-control rounded-4 text-center" id="validationDefault04"  placeholder="Re-enter Password" name="conformPassword"  value={vendorRegisterData.conformPassword}    onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
+  <div className="col-md-12 col-12 mt-3">
+    <label htmlFor="validationDefault04" className="form-label"> Conform Password</label> 
+    <input type="password" className="form-control rounded-4 text-center" id="validationDefault04"  placeholder="Re-enter Password" name="conformPassword"  value={vendorRegisterData.conformPassword}    onChange={onchange} style={{"backgroundColor":"#E8F0FE"}} required/>
   </div>
   <button   type='submit' className=' login-btn  btn btn-primary   mt-4      ' style={{"backgroundColor":"#4A90E2"}}>Register</button>
         </form>

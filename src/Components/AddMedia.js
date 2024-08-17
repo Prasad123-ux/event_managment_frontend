@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 
 
 
-function AddMedia() {
+function AddMedia({api}) {
   const [token, setToken]= useState(null)
 const [mediaDetails,setMediaDetails]= useState({eventName:"",description:"",date:""})
 const [mediaUrls,setMediaUrls]= useState([])
@@ -70,14 +70,17 @@ const token = localStorage.getItem('token')
  
     try{
       
-    const response=  await fetch('http://localhost:7000/api/vendor/uploadMedia',{
+    const response=  await fetch(`${api}/api/vendor/uploadMedia`,{
         method:"POST",
         body:JSON.stringify({token:token,url:mediaUrls,data:mediaDetails}),
       headers:{"Content-type":"application/json"}
       })
       const data= await response.json()
-      console.log(data)
+    if(data.Success===true){
       addToast(data.Message,"success")
+    }else{
+    addToast(data.Message,"error")
+    }
 
       setMediaUrls("")
 
@@ -125,16 +128,16 @@ useEffect(()=>{
           {/* handeling form */}
 
 
-        <div class="form-row mt-5">
-    <div class="form-group col-md-12">
+        <div className="form-row mt-5">
+    <div className="form-group col-md-12">
       <label htmlFor="inputFullName">Event Name <span className='text-danger'>*</span></label>
       <input type="name" className="form-control rounded-3" id="inputFullName" name="eventName" value={mediaDetails.eventName}   onChange={onchange} placeholder=" Event Name" required/>
     </div>
-    <div class="form-group col-md-12">
+    <div className="form-group col-md-12">
       <label htmlFor="inputDescription">Event Description <span className='text-danger'>*</span></label>
       <input type="text" className="form-control rounded-3" id="inputEmail" name="description" value={mediaDetails.description}   onChange={onchange} placeholder="Event Description" required/>
     </div>
-    <div class="form-group col-md-12">
+    <div className="form-group col-md-12">
       <label htmlFor="inputDate">Event Date <span className='text-danger'> *</span></label>
       <input type="Date" className="form-control rounded-3" id="inputDate" name="date" value={mediaDetails.date}  onChange={onchange} placeholder="Event Date" required/>
     </div>
@@ -144,9 +147,9 @@ useEffect(()=>{
     <div type='file' onClick={handleUpload} className='btn w-25 mt-2 mx-auto upload-btn'> <span className='mx-auto'><IoCloudUploadOutline  c/></span> <span className='mx-auto'>Upload Files</span></div>
  
   
-  <div class="form-check mt-2">
-      <input class="form-check-input " type="checkbox" value="" id="checkInput" required/>
-      <label class="form-check-label" htmlFor="checkInput">
+  <div className="form-check mt-2">
+      <input className="form-check-input " type="checkbox" value="" id="checkInput" required/>
+      <label className="form-check-label" htmlFor="checkInput">
       Please upload only supported file types (image,video) to ensure compatibility."
       </label>
       </div>

@@ -11,6 +11,9 @@ import ExpandMedia from './Components/ExpandMedia'
 
 export default function App() {
   
+const api='https://event-managment-backend.onrender.com' 
+
+console.log(api)
   
   return (
     <div>
@@ -21,12 +24,12 @@ export default function App() {
       
       
         <Routes>
-        <Route exact path="/" element={<UserLogin/>}/>
-        <Route exact path="/dashboard" element={<Dashboard/>}/>
-          <Route exact path="/vendor/login" element={<Login/>}/>
-          <Route exact path="/vendor/registration" element={<Registration/>}/>
-          <Route exact path="/vendor/addMedia" element={<AddMedia/>}/>
-          <Route exact path="/event/eventDetails/:id" element={<EventPage/>}/>
+        <Route exact path="/" element={<UserLogin api={api} />}/>
+        <Route exact path="/dashboard" element={<Dashboard api={api}/>}/>
+          <Route exact path="/vendor/login" element={<Login api={api}/>}/>
+          <Route exact path="/vendor/registration" element={<Registration api={api}/>}/>
+          <Route exact path="/vendor/addMedia" element={<AddMedia api={api}/>}/>
+          <Route exact path="/event/eventDetails/:id" element={<EventPage api={api}/>}/>
           <Route exact path="/event/eventDetails/Media" element={<ExpandMedia/>}/>
 
         </Routes>
