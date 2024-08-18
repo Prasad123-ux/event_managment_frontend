@@ -11,7 +11,8 @@ import ExpandMedia from './Components/ExpandMedia'
 
 export default function App() {
   
-const api='https://event-managment-backend.onrender.com' 
+const api=   'https://event-managment-backend.onrender.com' 
+
 
 console.log(api)
   

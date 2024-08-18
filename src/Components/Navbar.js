@@ -37,15 +37,18 @@ const [token,setToken]= useState(null)
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse row  ms-5" id="navbarTogglerDemo03">
-                <div className="navbar-heading col-12 col-md-2" href="/"><span>Event</span><span>Hive</span></div>
+                <div className="collapse navbar-collapse row  " id="navbarTogglerDemo03">
+                <div className="navbar-heading col-12 col-sm-8" href="/"><span>Event</span><span>Hive</span></div>
 
-                    <Link className="nav-link  col-md-4 col-12 "  to="/dashboard">Home</Link>
+                  
 
 
-                    <div className='d-flex justify-content-around col-12 col-md-6 '>
-                        <button onClick={getMedia} className='btn btn-sm-outline-info btn-outline-info d-none  d-sm-block'><IoMdAdd className='fs-4' /></button>
-                        <button className='btn  btn-outline-info' data-bs-target="#exampleModal"  data-bs-toggle="modal"><IoIosLogOut /></button>
+                    <div className='   col-12 col-sm-4  d-flex justify-content-around flex-row mt-2 '>
+                        <button onClick={getMedia} className='btn btn-sm-outline-info btn-outline-info d-none    d-sm-block '><IoMdAdd className='fs-4' /></button>
+                        <Link className="nav-link  btn   d-block  "  to="/dashboard">Home</Link>
+                        <button className='btn    d-block d-sm-none' data-bs-target="#exampleModal"  data-bs-toggle="modal">Log Out</button>
+
+                        <button className='btn  btn-outline-info  d-none   d-sm-block' data-bs-target="#exampleModal"  data-bs-toggle="modal"><IoIosLogOut /></button>
                       {  token===null ? <Link className="nav-link" to="/vendor/login">I'm Photographer</Link>:""}
                     </div>
                 </div>

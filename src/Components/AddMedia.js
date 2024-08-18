@@ -144,7 +144,7 @@ useEffect(()=>{
 
     {/* Upload button for uploading files on cloudinary */} 
 
-    <div type='file' onClick={handleUpload} className='btn w-25 mt-2 mx-auto upload-btn'> <span className='mx-auto'><IoCloudUploadOutline  c/></span> <span className='mx-auto'>Upload Files</span></div>
+    <div type='file' onClick={handleUpload} className='btn  mt-2 mx-auto upload-btn'> <span className='mx-auto'><IoCloudUploadOutline  c/></span> <span className='mx-auto'>Upload Files</span></div>
  
   
   <div className="form-check mt-2">
@@ -159,7 +159,7 @@ useEffect(()=>{
 
 
 <div className='d-flex justify-content-between '>
-<button type='submit' className='btn btn-primary w-25 mt-5'> Submit</button>
+<button type='submit' className='btn btn-primary  mt-5'> Submit</button>
 </div>
         </form>
       </div>

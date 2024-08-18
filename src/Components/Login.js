@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { IoCheckmark } from "react-icons/io5";
 import "../Styles/login.css"
@@ -20,11 +20,14 @@ function Login({api}) {
   onchange=(e)=>{
     setVendorData({...vendorData,[e.target.name]:e.target.value})                 //Adding details in array 
   }
-
+useEffect(()=>{
+  console.log(api)
+},[])
   const handleFormData=(e)=>{
-
+    
+    setLoader(true)
     e.preventDefault()
-setLoader(true)
+
     fetch(`${api}/api/vendor/login`,{                                //Calling the API for log in Vendor
       method:'POST',
       body:JSON.stringify({data:vendorData}),
@@ -32,10 +35,15 @@ setLoader(true)
         "Content-type":"application/json"
       }
     }).then((response)=>{
+      setLoader(false)
       if(!response.ok){
-        setLoader(false)
-        addToast("error while fetching", "server error","error")
-       
+        if(response.status===404){
+        
+        addToast("Internal Server Error", "Please Try again","error")
+        }else{
+          addToast("Validation Error", "User Not Found","error")
+
+        }
         
       }else{
         setLoader(false)
@@ -44,15 +52,19 @@ setLoader(true)
 
     }).then((data)=>{
       console.log(data)
+      
       if(data.Success===false){
+        setLoader(false)
         addToast(data.Title, data.Message,"error")
       }else{
+        setLoader(false)
         addToast(data.Title, data.Message,"success")
         localStorage.setItem('token',data.token)
         navigate('/dashboard')
       }
 
     }).catch((err)=>{
+      setLoader(false)
       console.log(err)
 
     })
@@ -163,7 +175,7 @@ setLoader(true)
   </div>
 </div>
     </div>
-    {loader ===true ? <Loader/> :""}
+    {loader ===true ?  <div className='mx-auto  d-flex justify-content-center mt-5'><Loader/></div> :" "}
     </div>
   )
 }

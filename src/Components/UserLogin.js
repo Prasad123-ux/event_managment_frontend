@@ -22,6 +22,7 @@ const onchange=(e)=>{
 
 
 const handleUserData=(e)=>{
+  // console.log(typeof(userData.eventID))
   e.preventDefault()
 
     fetch(`${api}/api/client/login`,{
@@ -32,9 +33,8 @@ const handleUserData=(e)=>{
     }
    }).then((response)=>{
     if(!response.ok){
-  //  console.log(response)
-      addToast("Event Not Found","Please try again, with Proper event ID","error")
-      throw new Error(response.statusText)
+      addToast("Event Not Found","Please Try Again, With Proper Event ID","error")
+      // throw new Error(response.statusText)
     }else{
       return response.json()
     }
